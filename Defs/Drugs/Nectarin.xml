@@ -70,8 +70,7 @@
       </li>
       <li Class="CompProperties_Drug">
         <chemical>Nectarin</chemical>
-        <addictiveness>0.120</addictiveness>
-        <minToleranceToAddict>0.5</minToleranceToAddict>
+        <addictiveness>0.5</addictiveness>
         <existingAddictionSeverityOffset>0.1</existingAddictionSeverityOffset>
         <needLevelOffset>3</needLevelOffset>
         <listOrder>30</listOrder>
@@ -189,4 +188,5 @@
   </ThoughtDef>
 
 </Defs>
+
 
