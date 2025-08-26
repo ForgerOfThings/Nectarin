@@ -110,7 +110,7 @@
       <li>
         <label>nectarin embrace</label>
         <description>That nectarin makes me feel as if the gods above envelop me, and gives empowering energy</description>
-        <baseMoodEffect>100</baseMoodEffect>
+        <baseMoodEffect>65</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -183,9 +183,10 @@
       <li>
         <label>nectarin withdrawal</label>
         <description>I long for the feeling of the gods will enveloping me, is this a test of faith, or have they abandoned me?</description>
-        <baseMoodEffect>-60</baseMoodEffect>
+        <baseMoodEffect>-65</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
 
 </Defs>
+
