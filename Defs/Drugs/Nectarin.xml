@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="DrugBase">
+    <defName>Nectarin</defName>
+    <label>nectarin</label>
+    <description>Ambrosia extract mixed with a chemical component to make a highly addictive, yet highly sought out drug, royals often take this drug for extended periods of time, but the lows of the withdrawl are as powerful as the high it produces</description>
+    <descriptionHyperlinks>
+      <HediffDef>NectarinHigh</HediffDef>
+      <HediffDef>NectarinTolerance</HediffDef>
+      <HediffDef>NectarinAddiction</HediffDef>
+    </descriptionHyperlinks>
+    <tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>Things/Item/Drug/Nectarin</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>135</MarketValue>
+      <Mass>0.3</Mass>
+      <DeteriorationRate>4</DeteriorationRate>
+      <Nutrition>0.1</Nutrition>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <baseIngestTicks>60</baseIngestTicks>
+      <chairSearchRadius>4</chairSearchRadius>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought></tasteThought>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.8</joy>
+      <nurseable>true</nurseable>
+      <drugCategory>Hard</drugCategory>
+      <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>NectarinHigh</hediffDef>
+          <severity>0.50</severity>
+          <toleranceChemical>Nectarin</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>NectarinTolerance</hediffDef>
+          <toleranceChemical>Nectarin</toleranceChemical>
+          <severity>0.032</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>DrugProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>600</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Ambrosia>2</Ambrosia>
+      <Neutroamine>8</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>65</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Drug">
+        <chemical>Nectarin</chemical>
+        <addictiveness>0.120</addictiveness>
+        <minToleranceToAddict>0.5</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.1</existingAddictionSeverityOffset>
+        <needLevelOffset>3</needLevelOffset>
+        <listOrder>30</listOrder>
+      </li>
+    </comps>
+    <allowedArchonexusCount>20</allowedArchonexusCount>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>NectarinHigh</defName>
+    <label>nectarin embrace</label>
+    <description>Nectarin chemicals in the bloodstream. It gives a euphoric high.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li/>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>NectarinHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>NectarinHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>nectarin embrace</label>
+        <description>That nectarin makes me feel as if the gods above envelop me, and gives empowering energy</description>
+        <baseMoodEffect>100</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Nectarin addiction -->
+  
+  <ChemicalDef>
+    <defName>Nectarin</defName>
+    <label>nectarin</label>
+    <addictionHediff>NectarinAddiction</addictionHediff>
+    <toleranceHediff>NectarinTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.8</onGeneratedAddictedToleranceChance>
+    <generateAddictionGenes>false</generateAddictionGenes>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_Nectarin</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>nectarin</label>
+    <description>Because of nectarin, this person needs to regularly consume nectarin to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>NectarinTolerance</defName>
+    <label>nectarin tolerance</label>
+    <description>A built-up tolerance to nectarin. The more severe this tolerance is, the more nectarin it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.020</severityPerDay>
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>Nectarin</chemical>
+      </li>
+    </comps>
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>NectarinAddiction</defName>
+    <label>nectarin addiction</label>
+    <description>A chemical addiction to nectarin. Long-term presence of nectarin has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
+\nWithout regular doses of nectarin, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <chemicalNeed>Chemical_Nectarin</chemicalNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.1</severityPerDay>
+        <showDaysToRecover>true</showDaysToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+      <li>
+        <label>withdrawal</label>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>NectarinWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>NectarinAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>nectarin withdrawal</label>
+        <description>I long for the feeling of the gods will enveloping me, is this a test of faith, or have they abandoned me?</description>
+        <baseMoodEffect>-60</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>
